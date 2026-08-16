@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <form id="formData">
+        <input type="text" name="firstname" id="firstname" placeholder="firstname"><br>
+        <input type="text" name="lastname" id="lastname" placeholder="lastname"><br>
+        <input type="email" name="email" id="email" placeholder="email"><br>
+        <input type="password" name="password" id="password" placeholder="password"><br>
+        <input type="password" name="confirmpassword" id="confirmpassword" placeholder="confirmpassword"><br>
+        <input type="submit">
+    </form>
+
+    <div id="output"></div>
+
+    <script>
+        document.getElementById("formData").addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const getData = JSON.parse(localStorage.getItem("userData")) || [] 
+            console.log(getData,"getdata")
+         
+            const firstname = document.getElementById("firstname").value;
+            const lastname = document.getElementById("lastname").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmpassword = document.getElementById("confirmpassword").value;
+            if (password!=confirmpassword){
+                alert("password does not matched!");
+                return;
+                
+            }
+            const data = {
+                firstname:firstname,
+                lastname:lastname,
+                email:email,
+                password:password
+            
+            }
+            getData.push(data);
+            localStorage.setItem("userData",JSON.stringify(getData));
+
+            let table= `
+            <table border="1">
+                <tr>
+                    <th>s.no</th>
+                    <th>firstname</th>
+                    <th>lastname</th>
+                    <th>email</th>
+                    <th>password</th>
+                </tr>
+            `;
+            getData.forEach((user,index)=>{
+                table+= `
+                <tr>
+                    <td>${index+1}</td>
+                    <td>${user.firstname}</td>
+                    <td>${user.lastname}</td>
+                    <td>${user.email}</td>
+                    <td>${user.password}</td>
+                </tr>
+            `;
+        });
+        table+='</table>';
+        document.getElementById("output").innerHTML=table;
+    });
+    </script>
+    
+</body>
+</html>
+
