@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login form</title>
+</head>
+<body>
+    <form id="registerdata">
+        <input type="email" name="email" id="email" placeholder="email"><br>
+        <input type="password" name="password" id="password" placeholder="password"><br>
+        <input type="submit" value="login">
+    </form>
+    <div id="output"></div>
+    <script>
+        document.getElementById("registerdata").addEventListener("submit" ,(e)=>{
+            e.preventDefault();
+            const email=document.getElementById("email").value;
+            const password=document.getElementById("password").value;
+            const getData = JSON.parse(localStorage.getItem("userData")) || [];
+            const user=getData.find((item)=>{
+                return item.email==email && item.password==password;
+            });
+            if (!user) {
+    alert("Invalid email or password!");
+    return;
+}
+        document.getElementById("output").innerHTML = `
+         
+         <h1>welcome to our website! ${user.firstname} ${user.lastname}</h1>
+          `;
+        });
+    
+    </script>
+</body>
+</html>
