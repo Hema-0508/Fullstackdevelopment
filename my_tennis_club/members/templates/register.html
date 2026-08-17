@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+
+<body>
+
+    <h1>Registration</h1>
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="firstname"
+            placeholder="firstname"
+            required
+        >
+        <br><br>
+
+        <input
+            type="text"
+            name="lastname"
+            placeholder="lastname"
+            required
+        >
+        <br><br>
+
+        <input
+            type="email"
+            name="email"
+            placeholder="email"
+            required
+        >
+        <br><br>
+
+        <input
+            type="password"
+            name="password"
+            placeholder="password"
+            required
+        >
+        <br><br>
+
+        <input
+            type="password"
+            name="confirmpassword"
+            placeholder="confirm password"
+            required
+        >
+        <br><br>
+
+        <input type="submit" value="Submit">
+
+    </form>
+
+    <p>
+        If you already have an account
+        <a href="{% url 'login' %}">Login</a>
+    </p>
+
+</body>
+
+</html>
