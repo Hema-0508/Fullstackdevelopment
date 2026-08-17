@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo List</title>
+</head>
+
+<body>
+
+    <h1>My Todo List</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="task"
+            placeholder="Enter your task"
+            required
+        >
+
+        <button type="submit">
+            Add Task
+        </button>
+    </form>
+
+    <hr>
+
+    {% for todo in todos %}
+
+        <p>
+            {{ todo.task }}
+
+            <a href="{% url 'update_todo' todo.id %}">
+                Edit
+            </a>
+
+            <a href="{% url 'delete_todo' todo.id %}">
+                Delete
+            </a>
+        </p>
+
+    {% empty %}
+
+        <p>No tasks available.</p>
+
+    {% endfor %}
+
+</body>
+</html>
