@@ -1,0 +1,87 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+html,body{
+    width:100px;
+    height:100px;
+}
+body{
+    font-family:Arial,sans-serif;
+}
+.section{
+    width:100px;
+    height:100vh;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:1fr 1fr;
+    gap:10px;
+    padding:10px;
+    background-color:white;
+}
+.college{
+    background-color:white;
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    border-radius:20px
+
+}
+.college h1{
+    font-size:20px;
+    margin-bottom:30px;
+    height:30px;
+}
+.college p{
+    font-size:16px;
+    margin-bottom:20px;
+}
+.college button{
+        width: 120px;
+    padding: 10px;
+
+    margin-top: 15px;
+
+    background-color: orangered;
+    color: white;
+
+    border: none;
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+.content{
+    padding:30px;
+    background-color: orangered;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+}
+.content h2{
+    color:black;
+    margin-bottom:10px;
+    height:100px;
+
+}
+.content p{
+    color:black;
+    font-size:18px;
+    height:80px;
+    
+}
+.image1 img{
+    width:600px;
+    height:400px;
+    object-fit:cover;
+    display:block;
+
+}
+.image2 img{
+    width:600px;
+    height:400px;
+    object-fit:cover;
+    display:block;
+}
